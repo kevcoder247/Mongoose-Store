@@ -11,5 +11,14 @@
         <a href="/products/new"><button>Add Product</button></a>
     </nav>
     <h1>Products Index</h1>
+  
+    <h2><%= products[0].name %></h2>
+
+    <ul>
+        <% for(let i = 0; i < products.length; i++){ %>
+            <li> <%= products[i].name %></li>
+       <% } %>
+    </ul>
+
 </body>
 </html>

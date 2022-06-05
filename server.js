@@ -29,18 +29,36 @@ app.use(express.urlencoded({ extended: true }))
 //Middleware that allows delete button to work
 // app.use(methodOverride("_method"))
 
+//SEED DATA==============================================
+const productSeed = require('./models/productsSeed')
 
+app.get('/products/seed', (req, res) => {
+    Product.deleteMany({}, (error, allProducts) => {});
+
+    Product.create(productSeed, (error, data) => {
+		res.redirect('/products');
+        
+    })
+})
 
 //Routes
 //INDEX============================
 app.get('/products', (req, res) => {
-    res.render('index.ejs');
+    Product.find({}, (error, allProducts) => {
+        res.render('index.ejs', {
+            products: allProducts,
+        });
+    });
 });
+
+
+
+
 //NEW
 //DELETE
 //UPDATE
 //CREATE=================================
-app.get('/products/new', (req, res) => {
+app.post('/products/new', (req, res) => {
     res.render('new.ejs');
 })
 //EDIT
