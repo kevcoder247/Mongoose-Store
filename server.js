@@ -39,7 +39,10 @@ app.get('/products', (req, res) => {
 //NEW
 //DELETE
 //UPDATE
-//CREATE
+//CREATE=================================
+app.get('/products/new', (req, res) => {
+    res.render('new.ejs');
+})
 //EDIT
 //SHOW
 
