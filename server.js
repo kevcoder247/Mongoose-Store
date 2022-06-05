@@ -1,25 +1,50 @@
-// require dependencies
+//Dependencies
 const express = require('express');
+const app = express();
+require('dotenv').config();
+const mongoose = require('mongoose');
+const Product = require('./models/products');
 // const methodOverride = require("method-override")
 
-// initialize express application
-const app = express();
+// Database configuration==================
+// Connect to MongoDB Atlas
+const db = mongoose.connection;
+mongoose.connect(process.env.DATABASE_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+});
 
-// configure application settings
-const port = 3000;
+// Database Connection Error/Success
+// Define callback functions for various events
+db.on('error', (err) => console.log(err.message + ' is mongod not running?'));
+db.on('connected', () => console.log('mongo connected'));
+db.on('disconnected', () => console.log('mongo disconnected'));
+
 
 //MIDDLEWARE
-app.use(express.urlencoded({ extended: false }))
+//GIVE ACCESS TO REQ.BODY
+app.use(express.urlencoded({ extended: true }))
+
 
 //Middleware that allows delete button to work
 // app.use(methodOverride("_method"))
 
-//Rouses
-//INDEX=========================================================
-app.get('/', (req, res) => {
-    res.send('index route working');
-});
 
-app.listen(port, () => {
-    console.log(`listening on  port ${port}`)
+
+//Routes
+//INDEX============================
+app.get('/products', (req, res) => {
+    res.send('Index workin');
+});
+//NEW
+//DELETE
+//UPDATE
+//CREATE
+//EDIT
+//SHOW
+
+//MAKE SURE PORT IS LISTENING
+const PORT = process.env.PORT;
+app.listen(PORT, () => {
+    console.log(`listening on  port ${PORT}`)
 })
