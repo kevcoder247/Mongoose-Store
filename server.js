@@ -34,7 +34,7 @@ app.use(express.urlencoded({ extended: true }))
 //Routes
 //INDEX============================
 app.get('/products', (req, res) => {
-    res.send('Index workin');
+    res.render('index.ejs');
 });
 //NEW
 //DELETE
