@@ -9,20 +9,27 @@
     <title>Products | Index</title>
 </head>
 <body>
-    <nav>
-        <a href="/products/new"><button>Add Product</button></a>
-    </nav>
-    <h1>Products Index</h1>
-  
+    <header>
+        <nav>
+            <a href="/products/new"><button>Add Product</button></a>
+        </nav>
+        <h1>Products Index</h1>
+    </header>
+
+    <div class="container">
     <ul>
-        <% for(let i = 0; i < products.length; i++){ %>
+        
+         <% for(let i = 0; i < products.length; i++){ %>
+        <div class="item">
             <li> <%= products[i].name %></li>
       
-            <a href="/products/<%=products[i]._id; %>"><li><img src=<%= products[i].img %></li></a>
+                <a href="/products/<%=products[i]._id; %>"><li><img src=<%= products[i].img %></li></a>
                          
             <li> <%= products[i].price %></li><br>
-       <% } %>
-    </ul>
-
+        </div>
+        <% } %>
+        
+        </ul>
+    </div>  
 </body>
 </html>
