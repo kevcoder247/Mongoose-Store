@@ -50,3 +50,9 @@ img{
     color: black;
     border: none;
 }
+
+input[type="submit"]{
+    background-color: red;
+    color: black;
+    border: none;
+}
