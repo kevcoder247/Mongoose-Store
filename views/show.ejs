@@ -4,27 +4,33 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href=" https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css">
+    <link rel="stylesheet" href="/css/main.css">
     <title>Product | Show</title>
 </head>
 <body>
-    <nav>
-        <a href="/products">Back to books Index</a>
-    </nav>
 
 
-    <h1>Show Page</h1>
+    <div class="container">
+        <nav>
+            <a href="/products"><button>Back to books Index</button></a>
+        </nav>
 
-    <h2><%= product.name %></h2>
-    <img src=<%= product.img %>>
-    <p><%=product.description%></p>
-    <p>Price: <%=product.price%></p>
-    <p><%=product.qty%> remaining</p>
-    <button>Buy</button> <br>
-    <a href="/products/<%=product._id; %>/edit">Edit</a><br>
+        <div class="showPageCard">
+            <h2><%= product.name %></h2>
+            <img src=<%= product.img %>>
+            <p><%=product.description%></p>
+            <p>Price: <%=product.price%></p>
+            <p><%=product.qty%> remaining</p>
 
-    <a href="/edit/<%=product._id; %>">edit 2</a>
+            <!-- buy button -->
+            <button class="buyButton">Buy</button> <br>
+            
+            <!-- edit button -->
+            <a href="/products/<%=product._id; %>/edit"><button class="editButton">Edit</button></a><br>
+        </div>
 
-
+    </div>
    
 
 </body>

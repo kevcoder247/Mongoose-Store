@@ -13,7 +13,7 @@
         <nav>
             <a href="/products/new"><button>Add Product</button></a>
         </nav>
-        <h1>Products Index</h1>
+        <h1>Products</h1>
     </header>
 
     <div class="container">
@@ -25,7 +25,7 @@
       
                 <a href="/products/<%=products[i]._id; %>"><li><img src=<%= products[i].img %></li></a>
                          
-            <li> <%= products[i].price %></li><br>
+            <li> $<%= products[i].price %></li><br>
         </div>
         <% } %>
         

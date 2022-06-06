@@ -27,9 +27,26 @@ header{
     border-radius: 10px;
     background-color: #274472;
     width: 30%;
-
 }
 img{
-    width: 200px;
+    width: 225px;
     border-radius: 10px;
+}
+/*=============SHOW PAGE STYLES================== */
+.showPageCard{
+    width: 40%;
+    margin: auto;
+    background-color: #274472;
+    border: 2px solid #C3E0E5;
+    border-radius: 10px;
+}
+.buyButton{
+    background-color: #39ff14;
+    color: black;
+    border: none;
+}
+.editButton{
+    background-color: red;
+    color: black;
+    border: none;
 }
