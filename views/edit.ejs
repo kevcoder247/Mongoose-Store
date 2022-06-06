@@ -4,28 +4,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product | Show</title>
+    <link rel="stylesheet" href=" https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css">
+    <title>Edit | PAGE</title>
 </head>
 <body>
-    <nav>
-        <a href="/products">Back to books Index</a>
-    </nav>
-
-
-    <h1>Show Page</h1>
+    <h1>Edit Product</h1>
 
     <h2><%= product.name %></h2>
     <img src=<%= product.img %>>
     <p><%=product.description%></p>
     <p>Price: <%=product.price%></p>
     <p><%=product.qty%> remaining</p>
-    <button>Buy</button> <br>
-    <a href="/products/<%=product._id; %>/edit">Edit</a><br>
-
-    <a href="/edit/<%=product._id; %>">edit 2</a>
-
-
-   
-
 </body>
 </html>

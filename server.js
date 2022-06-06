@@ -6,6 +6,10 @@ const mongoose = require('mongoose');
 const Product = require('./models/products');
 // const methodOverride = require("method-override")
 
+
+//Link CSS========================================
+app.use(express.static(__dirname + '/public'));
+
 // Database configuration==================
 // Connect to MongoDB Atlas
 const db = mongoose.connection;
@@ -30,16 +34,16 @@ app.use(express.urlencoded({ extended: true }))
 // app.use(methodOverride("_method"))
 
 //SEED DATA==============================================
-const productSeed = require('./models/productsSeed')
+// const productSeed = require('./models/productsSeed')
 
-app.get('/products/seed', (req, res) => {
-    Product.deleteMany({}, (error, allProducts) => {});
+// app.get('/products/seed', (req, res) => {
+//     Product.deleteMany({}, (error, allProducts) => {});
 
-    Product.create(productSeed, (error, data) => {
-		res.redirect('/products');
+//     Product.create(productSeed, (error, data) => {
+// 		res.redirect('/products');
         
-    })
-})
+//     })
+// })
 
 //Routes
 //INDEX============================
@@ -58,7 +62,12 @@ app.get('/products', (req, res) => {
 app.post('/products/new', (req, res) => {
     res.render('new.ejs');
 })
-//EDIT
+
+//EDIT====================================
+app.get('products/:id/edit', (req, res) => {
+   res.render('edit.ejs')
+})
+
 
 //SHOW===================================
 app.get('/products/:id', (req, res) => {
