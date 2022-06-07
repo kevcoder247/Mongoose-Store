@@ -1,7 +1,21 @@
 const express = require('express');
+const { findByIdAndDelete } = require('../models/product');
 const Product = require('../models/product');
 const router = express.Router();
 
+
+
+//SEED DATA==============================================
+const productSeed = require('../models/productsSeed')
+
+router.get('/products/seed', (req, res) => {
+    Product.deleteMany({}, (error, allProducts) => {});
+
+    Product.create(productSeed, (error, data) => {
+		res.redirect('/products');
+        
+    })
+})
 
 //INDEX============================
 router.get('/', (req, res) => {
@@ -12,17 +26,36 @@ router.get('/', (req, res) => {
     });
 });
 
-//NEW
-router.get('new', (req, res) => {
+//NEW=================================
+router.get('/new', (req, res) => {
     res.render('new.ejs');
 })
-//DELETE
+//DELETE===============================
+router.delete('/:id', (req, res) => {
+    Product.findByIdAndDelete(req.params.id, (error, data) => {
+        res.redirect('/products')
+    })
+})
 //UPDATE
+router.put('/:id', (req, res)=>{
+    Product.findByIdAndUpdate(
+        req.params.id,
+        req.body,
+        {
+            new: true,
+        },
+        (error, updatedProduct)=>{
+            res.redirect(`/products/${req.params.id}`);
+        }
+    );
+});
 
 //CREATE=================================
-// router.post('/new', (req, res) => {
-//     res.render('new.ejs');
-// })
+router.post('/new', (req, res) => {
+    Product.create(req.body, (error, newProduct) => {
+        res.redirect('/products')
+    })
+})
 
 //EDIT====================================
 router.get('/:id/edit', (req, res) => {
