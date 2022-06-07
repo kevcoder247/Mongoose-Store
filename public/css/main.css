@@ -14,19 +14,22 @@ header{
     /* border: 4px solid red; */
     text-align: center;
     font-size: 1.9rem;
+    width: 1000px;
    }
 .container ul{
     /* border: 6px solid rgb(76, 205, 37); */
     list-style: none;
     display: flex;
     justify-content: space-around;
-  
+    flex-wrap: wrap;
+   
 }
 .item{
     border: 2px solid #C3E0E5;
     border-radius: 10px;
     background-color: #274472;
     width: 30%;
+    margin-top: 10px;
 }
 img{
     width: 225px;

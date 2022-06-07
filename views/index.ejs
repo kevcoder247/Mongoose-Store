@@ -24,7 +24,13 @@
         <div class="item">
             <li> <%= products[i].name %></li>
       
-                <a href="/products/<%=products[i]._id; %>"><li><img src=<%= products[i].img %></li></a>
+                <a href="/products/<%=products[i]._id; %>">
+                    <li>
+                        <img src=<%= products[i].img %> />
+                    </li>
+                
+                
+                </a>
                          
             <li> $<%= products[i].price %></li><br>
         </div>

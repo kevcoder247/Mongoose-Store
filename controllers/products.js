@@ -4,7 +4,6 @@ const Product = require('../models/product');
 const router = express.Router();
 
 
-
 //SEED DATA==============================================
 const productSeed = require('../models/productsSeed')
 
@@ -51,9 +50,10 @@ router.put('/:id', (req, res)=>{
 });
 
 //CREATE=================================
-router.post('/new', (req, res) => {
+router.post('/', (req, res) => {
     Product.create(req.body, (error, newProduct) => {
         res.redirect('/products')
+        
     })
 })
 
