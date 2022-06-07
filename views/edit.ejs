@@ -8,12 +8,22 @@
     <title>Edit | PAGE</title>
 </head>
 <body>
+<a href="/products">Back Home</a>
     <h1>Edit Product</h1>
+    <img src="<%=product.img%>" alt="<%=product.name%>">
+    <form action="action=/product/<%= product._id %>?_method=PUT"%> method="POST">
+        Name: <input type="text" name="name" value="<%= product.name %>"><br>
+        
+        Desc: <input type="text" name="description" value="<%= product.description %> "> <br>
 
-    <h2><%= product.name %></h2>
-    <img src=<%= product.img %>>
-    <p><%=product.description%></p>
-    <p>Price: <%=product.price%></p>
-    <p><%=product.qty%> remaining</p>
+        Price: <input type="text" name="price" value="<%= product.price %> "> <br>
+
+        QTY: <input type="number" name="qty" value="product.qty %>"> <br>
+
+        <input type="submit" value="Save Changes">
+        
+    </form>
+    
+ 
 </body>
 </html>

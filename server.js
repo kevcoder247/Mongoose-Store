@@ -3,9 +3,11 @@ const express = require('express');
 const app = express();
 require('dotenv').config();
 const mongoose = require('mongoose');
-const Product = require('./models/products');
-// const methodOverride = require("method-override")
 
+// require controller
+const productsController = require('./controllers/products')
+
+// const methodOverride = require("method-override")
 
 //Link CSS========================================
 app.use(express.static(__dirname + '/public'));
@@ -29,6 +31,9 @@ db.on('disconnected', () => console.log('mongo disconnected'));
 //GIVE ACCESS TO REQ.BODY
 app.use(express.urlencoded({ extended: true }))
 
+//Controllers middleware================
+app.use('/products', productsController)
+
 
 //Middleware that allows delete button to work
 // app.use(methodOverride("_method"))
@@ -44,39 +49,6 @@ app.use(express.urlencoded({ extended: true }))
         
 //     })
 // })
-
-//Routes
-//INDEX============================
-app.get('/products', (req, res) => {
-    Product.find({}, (error, allProducts) => {
-        res.render('index.ejs', {
-            products: allProducts,
-        });
-    });
-});
-
-//NEW
-//DELETE
-//UPDATE
-//CREATE=================================
-app.post('/products/new', (req, res) => {
-    res.render('new.ejs');
-})
-
-//EDIT====================================
-app.get('products/:id/edit', (req, res) => {
-   res.render('edit.ejs')
-})
-
-
-//SHOW===================================
-app.get('/products/:id', (req, res) => {
-    Product.findById(req.params.id, (err, product) => {
-        res.render('show.ejs', {
-            product
-        })
-    })
-})
 
 //MAKE SURE PORT IS LISTENING
 const PORT = process.env.PORT;
