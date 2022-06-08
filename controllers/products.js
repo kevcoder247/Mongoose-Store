@@ -29,12 +29,14 @@ router.get('/', (req, res) => {
 router.get('/new', (req, res) => {
     res.render('new.ejs');
 })
+
 //DELETE===============================
 router.delete('/:id', (req, res) => {
     Product.findByIdAndDelete(req.params.id, (error, data) => {
         res.redirect('/products')
     })
 })
+
 //UPDATE
 router.put('/:id', (req, res)=>{
     Product.findByIdAndUpdate(
@@ -74,6 +76,17 @@ router.get('/:id', (req, res) => {
         })
     })
 })
-
+//Decrement============================
+router.post('/:id/decrement', (req, res) => {
+    const id = req.params.id
+    Product.findById(id, (error, product) => {
+        product.qty -= 1;
+        Product.findByIdAndUpdate(id, product, () => {
+            res.redirect(`/products/${id}`)
+        })
+        
+    })
+    
+})
 
 module.exports = router;

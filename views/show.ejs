@@ -20,12 +20,22 @@
             <h2><%= product.name %></h2>
             <img src=<%= product.img %>>
             <p><%=product.description%></p>
-            <p>Price: <%=product.price%></p>
-            <p><%=product.qty%> remaining</p>
+            <p>Price: $<%=product.price%></p>
+
+            
+            <% if(product.qty === 0){ %>
+               <p class="outOfStock">Out of stock</p>
+            <% } else{ %>
+                <p><%=product.qty%> remaining</p>
+           <% } %>
+           
 
             <!-- buy button -->
-            <button class="buyButton">Buy</button> <br>
+            <form action="/products/<%= product._id %>/decrement"%> method="POST">
+                <button type="submit" class="buyButton">Buy</button> <br>
             
+            </form>
+
             <!-- edit button -->
             <a href="/products/<%=product._id; %>/edit"><button class="editButton button-primary">Edit</button></a><br>
             

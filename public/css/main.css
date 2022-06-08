@@ -55,7 +55,7 @@ img{
 }
 
 input[type="submit"]{
-    background-color: red;
+    background-color: rgb(173, 164, 164);
     color: black;
     border: none;
 }
